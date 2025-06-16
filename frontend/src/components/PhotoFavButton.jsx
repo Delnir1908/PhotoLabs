@@ -5,7 +5,7 @@ import '../styles/PhotoFavButton.scss';
 const PhotoFavButton = (props) => {
   const {displayAlert} = props;
   const [selected, setSelected] = useState(false);
-  const toggleSelected = () => setSelected(!selected);
+  const toggleSelected = () => setSelected(prevSelected => !prevSelected);
 
   return (
     <div className="photo-list__fav-icon">

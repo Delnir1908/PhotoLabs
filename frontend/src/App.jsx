@@ -27,12 +27,9 @@ const App = () => {
   return (
     <div className="App">
       <div className='photo-list'>
-        {photos.map(() => {
-          <div>
-              <PhotoListItem key={sampleDataForPhotoListItem.id} photo={sampleDataForPhotoListItem}/>
-              <PhotoFavButton />
-          </div>
-        })}
+        {photos.map(() => 
+          <PhotoListItem key={sampleDataForPhotoListItem.id} photo={sampleDataForPhotoListItem}/>
+        )}
       </div>
     </div>
   );
