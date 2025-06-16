@@ -1,4 +1,5 @@
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
   const {id, location, urls, user} = props.photo;
@@ -6,6 +7,7 @@ const PhotoListItem = (props) => {
   return (
     <div className="photo-list__item">
       <img className='photo-list__image' src={urls.regular} />
+      <PhotoFavButton displayAlert={props.displayAlert} />
       <div className="photo-list__user-details">
         <img className='photo-list__user-profile' src={user.profile} />
         <div className="photo-list__user-info">
