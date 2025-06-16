@@ -27,8 +27,8 @@ const App = () => {
   return (
     <div className="App">
       <div className='photo-list'>
-        {photos.map((_,index) => 
-          (<PhotoListItem key={index} photo={sampleDataForPhotoListItem}/>)
+        {photos.map(() => 
+          (<PhotoListItem key={sampleDataForPhotoListItem.id} photo={sampleDataForPhotoListItem}/>)
         )}     
       </div>
     </div>
