@@ -1,9 +1,9 @@
 import "../styles/TopicList.scss";
 import TopicListItem from './TopicListItem'
-import topics from "../mocks/topics";
 
-const TopicList = () => {
-  const topicList = [...topics];
+const TopicList = (props) => {
+  const topicList = [...props.topics];
+  console.log(topicList);
   return (
     <div className="top-nav-bar__topic-list">
       {topicList.map((topic) => <TopicListItem key={topic.id} {...topic}/>)}
