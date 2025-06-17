@@ -58,7 +58,7 @@ const PhotoList = () => {
 
   return (
     <ul className="photo-list">
-      {photos.map((photo) => <PhotoListItem key={photo.id} props={photo} />) }
+      {photos.map((photo) => <PhotoListItem key={photo.id} {...photo} />) }
     </ul>
   );
 };
