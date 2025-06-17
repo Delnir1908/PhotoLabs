@@ -1,7 +1,6 @@
 import React from 'react';
-import PhotoList from './components/PhotoList';
-import TopNavigation from './components/TopNavigationBar';
 import './App.scss';
+import HomeRoute from './routes/HomeRoute';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
@@ -11,8 +10,7 @@ const App = () => {
       {/* <div className='photo-list'>
         {photos.map(() => <PhotoListItem key={sampleDataForPhotoListItem.id} photo={sampleDataForPhotoListItem}/>)}
       </div> */}
-      <TopNavigation />
-      <PhotoList />
+      <HomeRoute />
     </div>
   );
 };
