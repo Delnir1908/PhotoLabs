@@ -6,8 +6,9 @@ import topics from './mocks/topics';
 
 const App = () => {
 
-  const [hasFav, setHasFav] = useState(false);
-  const toggleFav = () => setHasFav(prevHasFav => !prevHasFav);
+  const [isFav, setIsFav] = useState(false);
+  const toggleFav = () => setIsFav(prevIsFav => !prevIsFav);
+  const favList = [];
 
   return (
     <div className="App">
