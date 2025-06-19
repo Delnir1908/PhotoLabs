@@ -8,7 +8,16 @@ const App = () => {
 
   const [isFav, setIsFav] = useState(false);
   const toggleFav = () => setIsFav(prevIsFav => !prevIsFav);
-  const favList = [];
+  const [favList, setFavList] = useState([]);
+  const updateFavList = () => {
+    if(!isFav && favList.includes(id)) {
+      favList.remove(id);
+    }
+  
+    if(isFav && !favList.includes(id)) {
+      favList.push(id);
+    }
+  };
 
   return (
     <div className="App">

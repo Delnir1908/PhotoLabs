@@ -3,7 +3,7 @@ import PhotoList from '../components/PhotoList';
 import TopNavigation from '../components/TopNavigationBar';
 
 const HomeRoute = (props) => {
-  const {topics, photos, favList} = props;
+  const {topics, photos, toggleFav, favList} = props;
 
   return (
     <div className="home-route">
