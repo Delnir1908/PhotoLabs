@@ -6,17 +6,15 @@ import topics from './mocks/topics';
 
 const App = () => {
 
-  const [isFav, setIsFav] = useState(false);
-  const toggleFav = () => setIsFav(prevIsFav => !prevIsFav);
   const [favList, setFavList] = useState([]);
-  const updateFavList = () => {
-    if(!isFav && favList.includes(id)) {
-      favList.remove(id);
-    }
-  
-    if(isFav && !favList.includes(id)) {
-      favList.push(id);
-    }
+
+  // Toggle favorite by photo id
+  const toggleFav = (id) => {
+    setFavList(prevFavList =>
+      prevFavList.includes(id)
+        ? prevFavList.filter(favId => favId !== id) // remove if exists
+        : [...prevFavList, id] // add if not exists
+    );
   };
 
   return (
