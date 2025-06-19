@@ -6,12 +6,12 @@ import topics from './mocks/topics';
 
 const App = () => {
 
-  const [selected, setSelected] = useState(false);
-  const toggleSelected = () => setSelected(prevSelected => !prevSelected);
+  const [hasFav, setHasFav] = useState(false);
+  const toggleFav = () => setHasFav(prevHasFav => !prevHasFav);
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleSelected={toggleSelected}/>
+      <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav}/>
     </div>
   );
 };
