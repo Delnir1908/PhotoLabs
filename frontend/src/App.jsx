@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav}/>
+      <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav} favList={favList}/>
     </div>
   );
 };

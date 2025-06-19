@@ -3,11 +3,19 @@ import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
   const {id, location, urls, user} = props.photo;
-  const {toggleFav} = props.toggleFav;
+  const {toggleFav, favList} = props;
+
+  if(!isFav && favList.includes(id)) {
+    favList.remove(id);
+  }
+
+  if(isFav && !favList.includes(id)) {
+    favList.push(id);
+  }
 
   return (
     <div className="photo-list__item">
-      <PhotoFavButton displayAlert={props.displayAlert} toggleFav={toggleFav}/>
+      <PhotoFavButton displayAlert={props.displayAlert} toggleFav={toggleFav} favList={favList}/>
       <img className='photo-list__image' src={urls.regular} />
       <div className="photo-list__user-details">
         <img className='photo-list__user-profile' src={user.profile} />
