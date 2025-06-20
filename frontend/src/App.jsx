@@ -7,6 +7,8 @@ import topics from './mocks/topics';
 const App = () => {
 
   const [favList, setFavList] = useState([]);
+  const [isFavPhotoExist, setIsFavPhotoExist] = useState(false);
+  if(favList.length > 0) setIsFavPhotoExist(true);
 
   // Toggle favorite by photo id
   const toggleFav = (id) => {
@@ -19,7 +21,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav} favList={favList}/>
+      <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav} favList={favList} isFavPhotoExist={isFavPhotoExist}/>
     </div>
   );
 };

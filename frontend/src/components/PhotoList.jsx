@@ -6,7 +6,7 @@ const PhotoList = ({photos, favList, toggleFav}) => {
   return (
     <ul className="photo-list">
       {photos.map((photo) => {
-        return <PhotoListItem key={photo.id} photo={photo} toggleFav={toggleFav} favList={favList}/>;
+        return <PhotoListItem key={photo.id} photo={photo} toggleFav={toggleFav} favList={favList} displayAlert={displayAlert}/>;
        }) }
     </ul>
   );
