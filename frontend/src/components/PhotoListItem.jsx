@@ -6,7 +6,7 @@ const PhotoListItem = (props) => {
   const {toggleFav, favList, displayAlert, setDisplayModal} = props;
 
   return (
-    <div className="photo-list__item" onClick={setDisplayModal(true)}>
+    <div className="photo-list__item" onClick={() => setDisplayModal(true)}>
       <PhotoFavButton displayAlert={displayAlert} toggleFav={toggleFav} favList={favList} id={id}/>
       <img className='photo-list__image' src={urls.regular} />
       <div className="photo-list__user-details">
