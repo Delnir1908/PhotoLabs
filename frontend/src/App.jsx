@@ -21,6 +21,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav} favList={favList} isFavPhotoExist={isFavPhotoExist}/>
+      <PhotoDetailsModal />
     </div>
   );
 };
