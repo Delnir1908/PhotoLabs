@@ -8,6 +8,7 @@ const App = () => {
 
   const [favList, setFavList] = useState([]);
   const isFavPhotoExist = favList.length > 0;
+  const [displayModal, setDisplayModal] = useState(false);
 
   // Toggle favorite by photo id
   const toggleFav = (id) => {
@@ -20,8 +21,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav} favList={favList} isFavPhotoExist={isFavPhotoExist}/>
-      <PhotoDetailsModal />
+      <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav} favList={favList} isFavPhotoExist={isFavPhotoExist} setDisplayModal={setDisplayModal}/>
+      {displayModal && <PhotoDetailsModal />}
     </div>
   );
 };
