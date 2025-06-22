@@ -4,18 +4,24 @@ import PhotoListItem from '../components/PhotoListItem';
 import PhotoFavButton from '../components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const {toggleFav, favList, displayAlert, setDisplayModal, singlePhotoDetail, setSinglePhotoDetail} = props;
-  const {id, location, urls, user, similar_photos} = singlePhotoDetail;
+  const {
+    toggleFav,
+    favList,
+    displayAlert,
+    setDisplayModal, // This is onClosePhotoDetailsModal from App.jsx
+    singlePhotoDetail,
+  } = props;
+
+  const { id, location, urls, user, similar_photos } = singlePhotoDetail;
   const similarPhotosArray = Object.values(similar_photos);
-  console.log(singlePhotoDetail);
 
   const handleClick = () => {
-    setDisplayModal(false);
-  }
+    setDisplayModal(); // This will close the modal
+  };
 
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={() =>handleClick()}>
+      <button className="photo-details-modal__close-button" onClick={handleClick}>
         <img src={closeSymbol} alt="close symbol"/>
       </button>
       <PhotoFavButton displayAlert={displayAlert} toggleFav={toggleFav} favList={favList} id={id}/>
@@ -29,16 +35,19 @@ const PhotoDetailsModal = (props) => {
       </div>
       <div className="photo-details-modal__header">Similar Photos</div>
       <ul className="photo-details-modal__images">
-      {similarPhotosArray.map((photo) => {
-        return <PhotoListItem key={photo.id} photo={photo} toggleFav={toggleFav} favList={favList} displayAlert={displayAlert} setDisplayModal={setDisplayModal} setSinglePhotoDetail={setSinglePhotoDetail}/>;
-       }) }
-    </ul>
-
+        {similarPhotosArray.map((photo) => (
+          <PhotoListItem
+            key={photo.id}
+            photo={photo}
+            toggleFav={toggleFav}
+            favList={favList}
+            displayAlert={displayAlert}
+            setPhotoSelected={setDisplayModal}
+          />
+        ))}
+      </ul>
     </div>
-  )
+  );
 };
 
 export default PhotoDetailsModal;
-
-
-  

@@ -21,14 +21,14 @@ const App = () => {
         topics={topics}
         toggleFav={updateToFavPhotoIds}
         favList={state.favList}
-        isFavPhotoExist={state.isFavPhotoExist}
+        doesFavPhotoExist={state.doesFavPhotoExist}
         setDisplayModal={setPhotoSelected}
       />
       {state.displayModal && (
         <PhotoDetailsModal
           toggleFav={updateToFavPhotoIds}
           favList={state.favList}
-          isFavPhotoExist={state.isFavPhotoExist}
+          doesFavPhotoExist={state.doesFavPhotoExist}
           setDisplayModal={onClosePhotoDetailsModal}
           singlePhotoDetail={state.singlePhotoDetail}
         />

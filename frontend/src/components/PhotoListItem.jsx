@@ -2,14 +2,13 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
-  const {toggleFav, favList, displayAlert, setDisplayModal, setSinglePhotoDetail} = props;
-  const {id, location, urls, user} = props.photo;
+  const { toggleFav, favList, displayAlert, setPhotoSelected } = props;
+  const { id, location, urls, user } = props.photo;
+
   const handleClick = (e) => {
     e.preventDefault();
-    setDisplayModal(true);
-    setSinglePhotoDetail(props.photo);
-    console.log(props.photo);
-  }
+    setPhotoSelected(props.photo);
+  };
 
   return (
     <div className="photo-list__item" key={id} onClick={handleClick}>
@@ -23,7 +22,7 @@ const PhotoListItem = (props) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default PhotoListItem;

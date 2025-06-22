@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const useApplicationData = () => {
   const [favList, setFavList] = useState([]);
-  const isFavPhotoExist = favList.length > 0;
+  const doesFavPhotoExist = favList.length > 0;
   const [displayModal, setDisplayModal] = useState(false);
   const [singlePhotoDetail, setSinglePhotoDetail] = useState('');
 
@@ -30,7 +30,7 @@ const useApplicationData = () => {
   // State object
   const state = {
     favList,
-    isFavPhotoExist,
+    doesFavPhotoExist,
     displayModal,
     singlePhotoDetail
   };
