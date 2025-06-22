@@ -16,12 +16,13 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "helmet": "^3.18.0",
-    "pg": "^8.5.0",
-    "socket.io": "^2.2.0",
+    "knex": "^3.1.0",
+    "pg": "^8.16.2",
+    "socket.io": "^4.8.1",
     "ws": "^7.0.0"
   },
   "devDependencies": {
-    "jest": "^24.8.0",
+    "jest": "^30.0.2",
     "supertest": "^4.0.2"
   },
   "jest": {
