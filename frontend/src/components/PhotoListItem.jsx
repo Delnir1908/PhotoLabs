@@ -7,12 +7,11 @@ const PhotoListItem = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     setDisplayModal(true);
-    setSinglePhotoDetail()
-    console.log(e.target);
+    setSinglePhotoDetail(e.target)
   }
 
   return (
-    <div className="photo-list__item" onClick={handleClick}>
+    <div className="photo-list__item" key={id} onClick={handleClick}>
       <PhotoFavButton displayAlert={displayAlert} toggleFav={toggleFav} favList={favList} id={id}/>
       <img className='photo-list__image' src={urls.regular} />
       <div className="photo-list__user-details">
