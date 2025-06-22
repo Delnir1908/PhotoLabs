@@ -1,30 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import photos from './mocks/photos';
 import topics from './mocks/topics';
+import useApplicationData from './hooks/useApplicationData'; // Import your hook
 
 const App = () => {
-
-  const [favList, setFavList] = useState([]);
-  const isFavPhotoExist = favList.length > 0;
-  const [displayModal, setDisplayModal] = useState(false);
-  const [singlePhotoDetail, setSinglePhotoDetail] = useState('');
-
-  // Toggle favorite by photo id
-  const toggleFav = (id) => {
-    setFavList(prevFavList =>
-      prevFavList.includes(id)
-        ? prevFavList.filter(favId => favId !== id) // remove if exists
-        : [...prevFavList, id] // add if not exists
-    );
-  };
+  const {
+    state,
+    setPhotoSelected,
+    updateToFavPhotoIds,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleFav={toggleFav} favList={favList} isFavPhotoExist={isFavPhotoExist} setDisplayModal={setDisplayModal} setSinglePhotoDetail={setSinglePhotoDetail}/>
-      {displayModal && <PhotoDetailsModal toggleFav={toggleFav} favList={favList} isFavPhotoExist={isFavPhotoExist} setDisplayModal={setDisplayModal} singlePhotoDetail={singlePhotoDetail} setSinglePhotoDetail={setSinglePhotoDetail}/>}
+      <HomeRoute
+        photos={photos}
+        topics={topics}
+        toggleFav={updateToFavPhotoIds}
+        favList={state.favList}
+        isFavPhotoExist={state.isFavPhotoExist}
+        setDisplayModal={setPhotoSelected}
+      />
+      {state.displayModal && (
+        <PhotoDetailsModal
+          toggleFav={updateToFavPhotoIds}
+          favList={state.favList}
+          isFavPhotoExist={state.isFavPhotoExist}
+          setDisplayModal={onClosePhotoDetailsModal}
+          singlePhotoDetail={state.singlePhotoDetail}
+        />
+      )}
     </div>
   );
 };
