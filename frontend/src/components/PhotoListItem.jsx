@@ -7,7 +7,8 @@ const PhotoListItem = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     setDisplayModal(true);
-    setSinglePhotoDetail(e.target)
+    setSinglePhotoDetail(props.photo);
+    console.log(props.photo);
   }
 
   return (
