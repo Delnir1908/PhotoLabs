@@ -8,6 +8,7 @@ const PhotoListItem = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     setPhotoSelected(props.photo);
+    console.log(favList);
   };
 
   return (

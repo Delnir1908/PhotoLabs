@@ -25,6 +25,8 @@ const App = () => {
         setDisplayModal={setPhotoSelected}
       />
       {state.displayModal && (
+        <>
+        <div className="modal-overlay"></div>
         <PhotoDetailsModal
           toggleFav={updateToFavPhotoIds}
           favList={state.favList}
@@ -32,6 +34,7 @@ const App = () => {
           setDisplayModal={onClosePhotoDetailsModal}
           singlePhotoDetail={state.singlePhotoDetail}
         />
+        </>
       )}
     </div>
   );
