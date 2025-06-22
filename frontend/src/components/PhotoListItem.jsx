@@ -3,11 +3,12 @@ import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
   const {id, location, urls, user} = props.photo;
-  const {toggleFav, favList, displayAlert, setDisplayModal} = props;
+  const {toggleFav, favList, displayAlert, setDisplayModal, setSinglePhotoDetail} = props;
   const handleClick = (e) => {
     e.preventDefault();
     setDisplayModal(true);
-    console.log(e);
+    setSinglePhotoDetail()
+    console.log(e.target);
   }
 
   return (
