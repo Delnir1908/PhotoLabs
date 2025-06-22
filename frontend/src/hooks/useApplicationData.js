@@ -76,12 +76,18 @@ const useApplicationData = () => {
     fetch("/api/photos")
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, photos: data }))
+      .catch((error) => {
+        console.error('Error fetching topics:', error);
+      });
   }, []);
   
   useEffect(() => {
     fetch("/api/topics")
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, topics: data }))
+      .catch((error) => {
+        console.error('Error fetching topics:', error);
+      });
   }, []);
   
   return {
