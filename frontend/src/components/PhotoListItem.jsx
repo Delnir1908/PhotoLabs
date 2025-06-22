@@ -2,8 +2,8 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
-  const {id, location, urls, user} = props.photo;
   const {toggleFav, favList, displayAlert, setDisplayModal, setSinglePhotoDetail} = props;
+  const {id, location, urls, user} = props.photo;
   const handleClick = (e) => {
     e.preventDefault();
     setDisplayModal(true);
