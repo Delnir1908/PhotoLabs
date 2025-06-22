@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -38,12 +38,12 @@ const initialState = {
   photos: [],
   topics: [],
   singlePhotoDetail: '',
-  displayModal: false
+  displayModal: false,
 };
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  
   // Toggle favorite photo ID
   const updateToFavPhotoIds = (id) => {
     if (state.favList.includes(id)) {
@@ -52,26 +52,38 @@ const useApplicationData = () => {
       dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, id });
     }
   };
-
+  
   // Set selected photo and open modal
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, photo });
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, open: true });
   };
-
+  
   // Close modal and clear selected photo
   const onClosePhotoDetailsModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, open: false });
     dispatch({ type: ACTIONS.SELECT_PHOTO, photo: '' });
   };
-
+  
   // Set photos and topics
   const setPhotoData = (photos) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, photos });
   const setTopicData = (topics) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, topics });
-
+  
   // Derived state
   const doesFavPhotoExist = Array.isArray(state.favList) && state.favList.length > 0;
-
+  
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, photos: data }))
+  }, []);
+  
+  useEffect(() => {
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, topics: data }))
+  }, []);
+  
   return {
     state: { ...state, doesFavPhotoExist },
     updateToFavPhotoIds,
