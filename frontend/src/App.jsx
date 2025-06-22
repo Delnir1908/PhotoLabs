@@ -28,6 +28,7 @@ const App = () => {
         <>
         <div className="modal-overlay"></div>
         <PhotoDetailsModal
+          key={state.singlePhotoDetail.id}
           toggleFav={updateToFavPhotoIds}
           favList={state.favList}
           doesFavPhotoExist={state.doesFavPhotoExist}
