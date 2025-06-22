@@ -6,7 +6,7 @@ import PhotoFavButton from '../components/PhotoFavButton';
 const PhotoDetailsModal = (props) => {
   const {toggleFav, favList, displayAlert, setDisplayModal, singlePhotoDetail, setSinglePhotoDetail} = props;
   const {id, location, urls, user, similar_photos} = singlePhotoDetail;
-  const similarPhotosArray = Object.keys(similar_photos);
+  const similarPhotosArray = Object.values(similar_photos);
   console.log(singlePhotoDetail);
 
   const handleClick = () => {
