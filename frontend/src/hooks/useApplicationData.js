@@ -6,7 +6,7 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
 };
 
 function reducer(state, action) {
@@ -89,14 +89,30 @@ const useApplicationData = () => {
         console.error('Error fetching topics:', error);
       });
   }, []);
+
+  const fetchPhotosByTopic = (topicId) => {
+    const url = topicId 
+      ? `/api/topics/${topicId}/photos` 
+      : `/api/photos`;
   
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, photos: data }))
+      .catch(error => console.error('Fetch error:', error));
+  };
+  
+
   return {
     state: { ...state, doesFavPhotoExist },
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
     setPhotoData,
-    setTopicData
+    setTopicData,
+    fetchPhotosByTopic
   };
 };
 

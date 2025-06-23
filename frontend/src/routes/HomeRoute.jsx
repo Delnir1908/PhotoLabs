@@ -11,6 +11,7 @@ const HomeRoute = (props) => {
     displayAlert,
     doesFavPhotoExist,
     setDisplayModal,
+    fetchPhotosByTopic
   } = props;
 
   return (
@@ -18,6 +19,7 @@ const HomeRoute = (props) => {
       <TopNavigation 
         topics={topics}
         doesFavPhotoExist={doesFavPhotoExist}
+        fetchPhotosByTopic={fetchPhotosByTopic}
       />
       <PhotoList
         photos={photos}

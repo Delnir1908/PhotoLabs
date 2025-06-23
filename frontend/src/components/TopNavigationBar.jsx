@@ -3,11 +3,11 @@ import FavBadge from './FavBadge';
 import TopicList from './TopicList';
 
 const TopNavigation = (props) => {
-  const {topics, doesFavPhotoExist} = props;
+  const {topics, doesFavPhotoExist, fetchPhotosByTopic} = props;
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics}/>
+      <span className="top-nav-bar__logo" onClick={() => fetchPhotosByTopic('')}>PhotoLabs</span>
+      <TopicList topics={topics} fetchPhotosByTopic={fetchPhotosByTopic}/>
       <FavBadge doesFavPhotoExist={doesFavPhotoExist}/>
     </div>
   )
