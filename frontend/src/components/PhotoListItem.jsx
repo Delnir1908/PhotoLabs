@@ -5,10 +5,10 @@ const PhotoListItem = (props) => {
   const { toggleFav, favList, displayAlert, setPhotoSelected, photo } = props;
   const { id, location, urls, user } = photo;
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     setPhotoSelected(photo);
-    console.log(favList);
-    console.log(photo);
+    console.log(favList); //test favList
+    console.log(photo); //test which photo is selected
   };
 
   return (

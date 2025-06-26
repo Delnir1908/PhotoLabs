@@ -8,7 +8,7 @@ const PhotoDetailsModal = (props) => {
     toggleFav,
     favList,
     displayAlert,
-    setDisplayModal, // This is onClosePhotoDetailsModal from App.jsx
+    setDisplayModal,
     singlePhotoDetail,
   } = props;
 
@@ -16,7 +16,7 @@ const PhotoDetailsModal = (props) => {
   const similarPhotosArray = Object.values(similar_photos);
 
   const handleClick = () => {
-    setDisplayModal(); // This will close the modal
+    setDisplayModal(); 
   };
 
   return (

@@ -10,6 +10,7 @@ const PhotoFavButton = (props) => {
       onClick={
         (e) => {
           toggleFav(id)
+          //if onClick is passed, call it with event e
           if (onClick) onClick(e);
         }
       }
