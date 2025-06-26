@@ -11,19 +11,25 @@ export const ACTIONS = {
 
 function reducer(state, action) {
   switch (action.type) {
+    //check if the photo liked is in the favList, if not add to it
     case ACTIONS.FAV_PHOTO_ADDED:
       if (!state.favList.includes(action.id)) {
         return { ...state, favList: [...state.favList, action.id] };
       }
       return state;
+    // remove the photo from favList by checking id
     case ACTIONS.FAV_PHOTO_REMOVED:
       return { ...state, favList: state.favList.filter(id => id !== action.id) };
+    //load photo data
     case ACTIONS.SET_PHOTO_DATA:
       return { ...state, photos: action.photos };
+    //load topics data
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topics: action.topics };
+    //select photo for more detail (modal)
     case ACTIONS.SELECT_PHOTO:
       return { ...state, singlePhotoDetail: action.photo };
+    //show photo detail
     case ACTIONS.DISPLAY_PHOTO_DETAILS:
       return { ...state, displayModal: action.open };
     default:
@@ -72,6 +78,7 @@ const useApplicationData = () => {
   // Derived state
   const doesFavPhotoExist = Array.isArray(state.favList) && state.favList.length > 0;
   
+  //mount photos data
   useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
@@ -81,6 +88,7 @@ const useApplicationData = () => {
       });
   }, []);
   
+  //ount topics data
   useEffect(() => {
     fetch("/api/topics")
       .then((response) => response.json())
@@ -90,6 +98,7 @@ const useApplicationData = () => {
       });
   }, []);
 
+  //show photo by topicId, if no topicId selected, show all
   const fetchPhotosByTopic = (topicId) => {
     const url = topicId 
       ? `/api/topics/${topicId}/photos` 
@@ -104,7 +113,7 @@ const useApplicationData = () => {
       .catch(error => console.error('Fetch error:', error));
   };
   
-
+//return all updated state
   return {
     state: { ...state, doesFavPhotoExist },
     updateToFavPhotoIds,
